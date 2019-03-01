@@ -24,7 +24,7 @@ class Database:
         database = settings.db_database
         user = settings.db_user
 
-        engine = create_engine(f'postgresql+psycopg2://{user}:{password}@{host}/{database}')
+        engine = create_engine('postgresql+psycopg2://{0}:{1}@{2}/{3}'.format(user, password, host, database))
         db_session = scoped_session(sessionmaker(autocommit=False,
                                                  autoflush=False,
                                                  bind=engine))
